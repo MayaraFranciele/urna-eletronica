@@ -4,22 +4,46 @@ programa
 	inclua biblioteca Matematica
 	funcao inicio()
 	{
-	inteiro Candidato1 = 0, Candidato2= 0, Candidato3= 0, Branco= 0, Nulo= 0, Voto= 0, Total = 0
-	real PorcentCand1, PorcentCand2, PorcentCand3, PorcentBranco, PorcentNulo, Arredondamento
+	inteiro Candidato1 = 0, Candidato2 = 0, Candidato3 = 0, Branco = 0, Nulo = 0, Voto = 0, Total = 0
+	real PorcentCand1, PorcentCand2, PorcentCand3, PorcentBranco, PorcentNulo 
+	cadeia NomeCandidato1, NomeCandidato2, NomeCandidato3
+	
+	
 	faca {
-		escreva("Digite 1 para votar no CANDIDATO 1 \n")
-		escreva("Digite 2 para votar no CANDIDATO 2 \n")
-		escreva("Digite 3 para votar no CANDIDATO 3 \n") 
+		escreva("Digite o nome do CANDIDATO 1: \n")
+		leia(NomeCandidato1)
+		
+		escreva("Digite o nome do CANDIDATO 2: \n")
+		leia(NomeCandidato2)
+		
+		escreva("Digite o nome do CANDIDATO 3: \n")
+		leia(NomeCandidato3) 
+		
 		escreva("Para votar em BRANCO digite 5 e para votar em NULO digite 8 \n")
-		escreva("Para encerrar digite 0 \n")
-		escreva("Qual seu voto?: ")
+		escreva("Qual seu voto: ")
 		leia(Voto)
 
+		escreva("Para encerrar digite S/N? \n")
+
+		caracter Encerrar
+		Encerrar = 'N'
+
+		enquanto (Encerrar !='S')
+		{
+			escreva ("Deseja encerrar S/N?")
+			leia(Encerrar)
+		}
+
+	
+		
+
+		
+
+	
+		
+		
 		escolha(Voto)
 		{
-		caso 0: 
-		escreva("Votação encerrada \n")
-		pare
 		caso 1:
 		Candidato1 = Candidato1++
 		pare
@@ -31,22 +55,30 @@ programa
 		pare
 		caso 5:
 		Branco = Branco++
+		pare
 		caso contrario:
-		Nulo = Nulo ++
+		Nulo = Nulo++
 		}
-		limpa ()
+		limpa()
 		}
 		enquanto(Voto != 0)
 
 		Total = Candidato1 + Candidato2 + Candidato3 + Branco + Nulo
 
 		PorcentCand1 = (Candidato1 * 100.0) / Total
-		Arredondamento = Matematica.arredondar (PorcentCand1, 2)
+		PorcentCand1 = Matematica.arredondar (PorcentCand1, 2)
 
 		PorcentCand2 = (Candidato2 * 100.0) / Total
+		PorcentCand2 = Matematica.arredondar (PorcentCand2, 2)
+		
 		PorcentCand3 = (Candidato3 * 100.0) / Total
+		PorcentCand3 = Matematica.arredondar (PorcentCand3, 2)
+		
 		PorcentNulo = (Nulo * 100.0) / Total
+		PorcentNulo = Matematica.arredondar (PorcentNulo, 2)
+		
 		PorcentBranco = (Branco * 100.0) / Total
+		PorcentBranco = Matematica.arredondar (PorcentBranco, 2)
 
 		escreva("Porcentagem do Candidato 1: ",PorcentCand1, "% \n")
 		escreva("Porcentagem do Candidato 2: ",PorcentCand2, "% \n")
@@ -54,26 +86,28 @@ programa
 		escreva("Porcentagem de Votos em Branco: ",PorcentBranco, "% \n")
 		escreva("Porcentagem de Votos Nulos: ",PorcentNulo, "% \n")
 
-		se (PorcentCand1 > PorcentCand2 e PorcentCand2 > PorcentCand3){
-			escreva("O Vencedor foi o Candidato 1")
-		}
-		senao se (PorcentCand2 > PorcentCand1 e PorcentCand1 > PorcentCand3) {
-			escreva("O Vencedor foi o Candidato 2")
-		}
-		senao se (PorcentCand3 > PorcentCand1 e PorcentCand1 > PorcentCand2){
-			escreva("O Vencedor foi o Candidato 3")
+		se (PorcentCand1 + PorcentBranco > PorcentCand2 e PorcentCand1 + PorcentBranco > PorcentCand3)
+		{
+		escreva("O Vencedor foi o Candidato 1, com: ",PorcentCand1 + PorcentBranco, "%")
 		}
 			
-		
+		senao se (PorcentCand2 + PorcentBranco > PorcentCand1 e PorcentCand2 + PorcentBranco > PorcentCand3)
+		{
+			escreva("O Vencedor foi o Candidato 2, com: ",PorcentCand2 + PorcentBranco, "%")
 		}
-
+		senao 
+		{
+			escreva("O Vencedor foi o Candidato 3, com: ",PorcentCand3 + PorcentBranco, "%")
+		}
+		
+	}
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 1910; 
+ * @POSICAO-CURSOR = 817; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
