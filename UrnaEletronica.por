@@ -4,26 +4,26 @@ programa
 	inclua biblioteca Matematica
 	funcao inicio()
 	{
-	inteiro Candidato1 = 0, Candidato2 = 0, Candidato3 = 0, Branco = 0, Nulo = 0, Voto = 0, Total = 0
+	inteiro Candidato1 = 0, Candidato2 = 0, Candidato3 = 0, Branco = 0, Nulo = 0, Voto = 0, Total = 0, Senha = 123456, SenhaDigitada
 	real PorcentCand1, PorcentCand2, PorcentCand3, PorcentBranco, PorcentNulo 
 	cadeia NomeCandidato1, NomeCandidato2, NomeCandidato3
 	
 	
 	faca {
-		escreva("Digite o nome do CANDIDATO 1: \n")
+		/* escreva("Digite o nome do CANDIDATO 1: \n")
 		leia(NomeCandidato1)
 		
 		escreva("Digite o nome do CANDIDATO 2: \n")
 		leia(NomeCandidato2)
 		
 		escreva("Digite o nome do CANDIDATO 3: \n")
-		leia(NomeCandidato3) 
+		leia(NomeCandidato3) */
 		
 		escreva("Para votar em BRANCO digite 5 e para votar em NULO digite 8 \n")
 		escreva("Qual seu voto: ")
 		leia(Voto)
 
-		escreva("Para encerrar digite S/N? \n")
+		/*escreva("Para encerrar digite S/N? \n")
 
 		caracter Encerrar
 		Encerrar = 'N'
@@ -32,15 +32,8 @@ programa
 		{
 			escreva ("Deseja encerrar S/N?")
 			leia(Encerrar)
-		}
+		}*/
 
-	
-		
-
-		
-
-	
-		
 		
 		escolha(Voto)
 		{
@@ -56,8 +49,12 @@ programa
 		caso 5:
 		Branco = Branco++
 		pare
-		caso contrario:
+		caso 8:
 		Nulo = Nulo++
+		pare
+		caso contrario:
+		escreva("VOTO INVÁLIDO")
+		
 		}
 		limpa()
 		}
@@ -86,18 +83,21 @@ programa
 		escreva("Porcentagem de Votos em Branco: ",PorcentBranco, "% \n")
 		escreva("Porcentagem de Votos Nulos: ",PorcentNulo, "% \n")
 
-		se (PorcentCand1 + PorcentBranco > PorcentCand2 e PorcentCand1 + PorcentBranco > PorcentCand3)
+		se (PorcentCand1 > PorcentCand2 e PorcentCand1 > PorcentCand3)
 		{
-		escreva("O Vencedor foi o Candidato 1, com: ",PorcentCand1 + PorcentBranco, "%")
+		escreva("RESULTADO: O Vencedor foi o Candidato 1, com: ",PorcentCand1 + PorcentBranco, "% de votos.")
 		}
 			
-		senao se (PorcentCand2 + PorcentBranco > PorcentCand1 e PorcentCand2 + PorcentBranco > PorcentCand3)
+		senao se (PorcentCand2 > PorcentCand1 e PorcentCand2 > PorcentCand3)
 		{
-			escreva("O Vencedor foi o Candidato 2, com: ",PorcentCand2 + PorcentBranco, "%")
+			escreva("RESULTADO: O Vencedor foi o Candidato 2, com: ",PorcentCand2 + PorcentBranco, "% de votos.")
 		}
-		senao 
+		senao se (PorcentCand3 > PorcentCand1 e PorcentCand3 > PorcentCand2)
 		{
-			escreva("O Vencedor foi o Candidato 3, com: ",PorcentCand3 + PorcentBranco, "%")
+			escreva("RESULTADO: O Vencedor foi o Candidato 3, com: ",PorcentCand3 + PorcentBranco, "% de votos.")
+		}
+		senao {
+			escreva("RESULTADO: Empate")
 		}
 		
 	}
@@ -107,9 +107,9 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 817; 
+ * @POSICAO-CURSOR = 2612; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
+ * @SIMBOLOS-INSPECIONADOS = {Branco, 7, 57, 6}-{Nulo, 7, 69, 4};
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
