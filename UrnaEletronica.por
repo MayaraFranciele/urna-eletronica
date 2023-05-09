@@ -2,63 +2,74 @@ programa
 {
 	
 	inclua biblioteca Matematica
+	inclua biblioteca Calendario --> c
+	inclua biblioteca Util --> u
+	inclua biblioteca Sons --> s
 	funcao inicio()
 	{
-	inteiro Candidato1 = 0, Candidato2 = 0, Candidato3 = 0, Branco = 0, Nulo = 0, Voto = 0, Total = 0, Senha = 123456, SenhaDigitada
+	inteiro Candidato1 = 0, Candidato2 = 0, Candidato3 = 0, Branco = 0, Nulo = 0, Voto = 0, Total = 0, Senha = 123456
 	real PorcentCand1, PorcentCand2, PorcentCand3, PorcentBranco, PorcentNulo 
 	cadeia NomeCandidato1, NomeCandidato2, NomeCandidato3
+	caracter Encerrar = 'N'
+	logico EncerrarVotos = falso, VotoInvalido = falso
+	inteiro som = s.carregar_som("confirma-urna.mp3")
 	
-	
-	faca {
-		/* escreva("Digite o nome do CANDIDATO 1: \n")
+	 	escreva("Digite o nome do CANDIDATO 1: \n")
 		leia(NomeCandidato1)
-		
+
 		escreva("Digite o nome do CANDIDATO 2: \n")
 		leia(NomeCandidato2)
-		
+
 		escreva("Digite o nome do CANDIDATO 3: \n")
-		leia(NomeCandidato3) */
-		
-		escreva("Para votar em BRANCO digite 5 e para votar em NULO digite 8 \n")
-		escreva("Qual seu voto: ")
+		leia(NomeCandidato3) 
+		limpa()
+	
+	faca {
+		escreva("Digite (1) para votar no ",NomeCandidato1, "\n")
+		escreva("Digite (2) para votar no ",NomeCandidato2, "\n")
+		escreva("Digite (3) para votar no ",NomeCandidato3, "\n")
+		escreva("Para votar em BRANCO digite 5 \n")
+		escreva("Para votar em NULO digite 8 \n")
+		escreva("Para encerrar digite a senha \n")
+		escreva("Digite seu voto: ")
 		leia(Voto)
 
-		/*escreva("Para encerrar digite S/N? \n")
-
-		caracter Encerrar
-		Encerrar = 'N'
-
-		enquanto (Encerrar !='S')
-		{
-			escreva ("Deseja encerrar S/N?")
-			leia(Encerrar)
-		}*/
-
-		
 		escolha(Voto)
 		{
 		caso 1:
 		Candidato1 = Candidato1++
+		Total ++
 		pare
 		caso 2:
 		Candidato2 = Candidato2++
+		Total++
 		pare
 		caso 3:
 		Candidato3 = Candidato3++
+		Total++
 		pare
 		caso 5:
 		Branco = Branco++
+		Total++
 		pare
 		caso 8:
 		Nulo = Nulo++
+		Total++
+		pare
+		caso 123456:
+		escreva("Deseja realmente encerrar? digite S/N?: \n")
+		leia(Encerrar)
+		se (Encerrar == 'S' ou Encerrar == 's'){
+			EncerrarVotos = verdadeiro
+		}
 		pare
 		caso contrario:
-		escreva("VOTO INVÁLIDO")
+		VotoInvalido = verdadeiro
 		
 		}
 		limpa()
 		}
-		enquanto(Voto != 0)
+		enquanto(nao EncerrarVotos)
 
 		Total = Candidato1 + Candidato2 + Candidato3 + Branco + Nulo
 
@@ -77,39 +88,48 @@ programa
 		PorcentBranco = (Branco * 100.0) / Total
 		PorcentBranco = Matematica.arredondar (PorcentBranco, 2)
 
-		escreva("Porcentagem do Candidato 1: ",PorcentCand1, "% \n")
-		escreva("Porcentagem do Candidato 2: ",PorcentCand2, "% \n")
-		escreva("Porcentagem do Candidato 3: ",PorcentCand3, "% \n")
+		escreva("Porcentagem do Candidato ",NomeCandidato1,": ",PorcentCand1, "% \n")
+		escreva("Porcentagem do Candidato ",NomeCandidato2,": ",PorcentCand2, "% \n")
+		escreva("Porcentagem do Candidato ",NomeCandidato3,": ",PorcentCand3, "% \n")
 		escreva("Porcentagem de Votos em Branco: ",PorcentBranco, "% \n")
 		escreva("Porcentagem de Votos Nulos: ",PorcentNulo, "% \n")
 
 		se (PorcentCand1 > PorcentCand2 e PorcentCand1 > PorcentCand3)
 		{
-		escreva("RESULTADO: O Vencedor foi o Candidato 1, com: ",PorcentCand1 + PorcentBranco, "% de votos.")
+		escreva("RESULTADO: O Vencedor foi o Candidato ",NomeCandidato1, " com: ",PorcentCand1 + PorcentBranco, "% de votos.")
 		}
 			
 		senao se (PorcentCand2 > PorcentCand1 e PorcentCand2 > PorcentCand3)
 		{
-			escreva("RESULTADO: O Vencedor foi o Candidato 2, com: ",PorcentCand2 + PorcentBranco, "% de votos.")
+			escreva("RESULTADO: O Vencedor foi o Candidato ",NomeCandidato2, " com: ",PorcentCand2 + PorcentBranco, "% de votos.")
 		}
 		senao se (PorcentCand3 > PorcentCand1 e PorcentCand3 > PorcentCand2)
 		{
-			escreva("RESULTADO: O Vencedor foi o Candidato 3, com: ",PorcentCand3 + PorcentBranco, "% de votos.")
+			escreva("RESULTADO: O Vencedor foi o Candidato ",NomeCandidato3, " com: ",PorcentCand3 + PorcentBranco, "% de votos.")
 		}
 		senao {
 			escreva("RESULTADO: Empate")
+			
 		}
+		s.reproduzir_som(som, falso)
+		
+		escreva("\n RELATÓRIO DA URNA: \n")
+		inteiro hora = c.hora_atual(verdadeiro)
+		escreva("São: ",hora,"h. ")
+		
+		u.aguarde(2000)
 		
 	}
+	
 }
 /* $$$ Portugol Studio $$$ 
  * 
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 2612; 
+ * @POSICAO-CURSOR = 3321; 
  * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = {Branco, 7, 57, 6}-{Nulo, 7, 69, 4};
+ * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
  * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
  */
