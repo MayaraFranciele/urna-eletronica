@@ -2,8 +2,8 @@ programa
 {
 	
 	inclua biblioteca Matematica
-	inclua biblioteca Calendario --> c
-	inclua biblioteca Util --> u
+	//inclua biblioteca Calendario --> c
+	//inclua biblioteca Util --> u
 	inclua biblioteca Sons --> s
 	funcao inicio()
 	{
@@ -25,9 +25,9 @@ programa
 		limpa()
 	
 	faca {
-		escreva("Digite (1) para votar no ",NomeCandidato1, "\n")
-		escreva("Digite (2) para votar no ",NomeCandidato2, "\n")
-		escreva("Digite (3) para votar no ",NomeCandidato3, "\n")
+		escreva("Digite (1) para votar no(a) ",NomeCandidato1, "\n")
+		escreva("Digite (2) para votar no(a) ",NomeCandidato2, "\n")
+		escreva("Digite (3) para votar no(a) ",NomeCandidato3, "\n")
 		escreva("Para votar em BRANCO digite 5 \n")
 		escreva("Para votar em NULO digite 8 \n")
 		escreva("Para encerrar digite a senha \n")
@@ -113,11 +113,11 @@ programa
 		}
 		s.reproduzir_som(som, falso)
 		
-		escreva("\n RELATÓRIO DA URNA: \n")
-		inteiro hora = c.hora_atual(verdadeiro)
-		escreva("São: ",hora,"h. ")
+		//escreva("\n RELATÓRIO DA URNA: \n")
+		//inteiro hora = c.hora_atual(verdadeiro)
+		//escreva("São: ",hora,"h. ")
 		
-		u.aguarde(2000)
+		//u.aguarde(2000)
 		
 	}
 	
@@ -127,7 +127,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 3321; 
+ * @POSICAO-CURSOR = 934; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
